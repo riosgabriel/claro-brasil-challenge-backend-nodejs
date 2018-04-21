@@ -1,0 +1,10 @@
+{
+  "name": "claro-brasil-challenge-backend-nodejs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "winston": "~3.0.0-rc5"
+  }
+}
