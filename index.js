@@ -8,37 +8,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post('/users/:user_id/devices', function (req, res, next) {
-    console.log(req.body);
-
-    handler.create(req.body.userId, req.body.device)
-        .then(() => {
-            res.status(200).send({status: 200})
-        })
-        .catch((error) => {
-            res.status(500).send({status: 500, message: error})
-        });
-});
-
-app.put('/users/:user_id/devices/:device_id', function (req, res, next) {
-    handler.update(req.params.user_id, req.params.device_id, req.body.device)
-        .then(() => {
-            res.status(200).send({status: 200})
-        })
-        .catch((error) => {
-            res.status(500).send({status: 500, message: error})
-        });
-});
-
-app.delete('/users/:user_id/devices/:device_id', function (req, res, next) {
-    handler.delete(req.params.user_id, req.params.device_id)
-        .then(() => {
-            res.status(200).send({status: 200})
-        })
-        .catch((error) => {
-            res.status(500).send({status: 500, message: error})
-        });
-});
+app.post('/users/:user_id/devices', handler.create);
+app.put('/users/:user_id/devices/:device_id', handler.update);
+app.delete('/users/:user_id/devices/:device_id', handler.delete);
 
 database.openConnection()
     .then(() => {
