@@ -4,17 +4,13 @@ volumes:
 services:
   app:
     container_name: claro-app
-    image: node:6.10
-    volumes:
-     - ./:/app
+    build: .
     links:
      - mysql:mysql
     depends_on:
       - mysql
     ports:
      - "3000:3000"
-    working_dir: /app
-    entrypoint: node index.js
 
   mysql:
     container_name: database-mysql

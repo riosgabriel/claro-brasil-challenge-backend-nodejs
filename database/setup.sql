@@ -1,5 +1,3 @@
-CREATE DATABASE clarodb;
-
 USE clarodb;
 
 CREATE TABLE USER_DEVICES (
