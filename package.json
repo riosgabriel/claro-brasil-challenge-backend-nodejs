@@ -11,6 +11,7 @@
     "winston": "~3.0.0-rc5",
     "body-parser": "latest",
     "moment": "^2.22.1",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "config": "^1.30.0"
   }
 }

@@ -3,7 +3,7 @@
       "host": "mysql",
       "user": "root",
       "password": "passwd",
-      "database": "'clarodb",
+      "database": "clarodb",
       "insecureAuth": true
   }
 }
