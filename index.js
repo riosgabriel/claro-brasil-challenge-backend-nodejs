@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get('/healthcheck', handler.healthcheck)
 app.post('/users/:user_id/devices', handler.create);
 app.put('/users/:user_id/devices/:device_id', handler.update);
 app.delete('/users/:user_id/devices/:device_id', handler.delete);
