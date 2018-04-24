@@ -1,0 +1,9 @@
+{
+  "mysql": {
+      "host": "mysql",
+      "user": "root",
+      "password": "passwd",
+      "database": "'clarodb",
+      "insecureAuth": true
+  }
+}
