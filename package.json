@@ -6,6 +6,7 @@
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "winston": "~3.0.0-rc5",
-    "body-parser": "latest"
+    "body-parser": "latest",
+    "moment": "^2.22.1"
   }
 }
