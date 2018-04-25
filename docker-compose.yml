@@ -19,7 +19,8 @@ services:
       - "3306:3306"
     volumes:
       - data:/var/lib/mysql
-      - ./database/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+      - ./database:/tmp/database
+    command: mysqld --init-file="/tmp/database/setup.sql"
     environment:
       - MYSQL_ROOT_PASSWORD=passwd
       - MYSQL_DATABASE=clarodb
