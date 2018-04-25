@@ -1,5 +1,6 @@
 const mysql = require('mysql'),
-    conf = require('config');
+    conf = require('config'),
+    moment = require('moment');
 
 let connection = undefined;
 
@@ -83,7 +84,11 @@ class Database {
 
     static findLastChangeByUserId(userId) {
         return new Promise((resolve, reject) => {
-            return resolve()
+            if(userId == 99) {
+                resolve(moment().subtract(5, 'days'))
+            } else {
+                resolve()
+            }
         });
     }
 }

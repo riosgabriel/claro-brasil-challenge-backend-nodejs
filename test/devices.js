@@ -16,7 +16,6 @@ chai.use(chaiHttp);
 describe('Devices API', function() {
     this.timeout(5000);
 
-    // DELETE - Delete a device
     it('should delete a device', function(done) {
         chai.request(app)
             .delete('/users/2/devices/1')
@@ -25,6 +24,18 @@ describe('Devices API', function() {
                 res.should.be.json;
                 res.body.should.have.property('message');
                 res.body.message.should.equal('Device deleted');
+                done();
+            });
+    });
+
+    it('should not delete a device if its the only device created', function(done) {
+        chai.request(app)
+            .delete('/users/1/devices/1')
+            .end(function(err, res){
+                res.should.have.status(400);
+                res.should.be.json;
+                res.body.should.have.property('message');
+                res.body.message.should.equal('Could not remove device');
                 done();
             });
     });
@@ -61,6 +72,41 @@ describe('Devices API', function() {
                 res.should.be.json;
                 res.body.should.have.property('message');
                 res.body.message.should.equal('Device limit reached');
+                done();
+            });
+    });
+
+    it('should not update a device within 30 days', function(done) {
+        chai.request(app)
+            .put('/users/1/devices/1/change')
+            .send({
+                device: {
+                    name: "Moto X",
+                    model: "Android"
+                }
+            })
+            .end(function(err, res){
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.have.property('message');
+                res.body.message.should.equal('Device changed');
+                done();
+            });
+    });
+
+    it('should not update a device within 30 days', function(done) {
+        chai.request(app)
+            .put('/users/99/devices/1/change')
+            .send({
+                device: {
+                    name: "Moto X",
+                    model: "Android"
+                }
+            })
+            .end(function(err, res){
+                res.should.have.status(400);
+                res.should.be.json;
+                res.body.should.have.property('message');
                 done();
             });
     });
